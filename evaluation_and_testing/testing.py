@@ -179,6 +179,7 @@ def evaluate_leave_one_out_implicit(recommender, interactions_df, items_df, max_
     for train_index, test_index in kf.split(interactions_df.index):
         interactions_df_train = interactions_df.loc[interactions_df.index[train_index]]
         interactions_df_test = interactions_df.loc[interactions_df.index[test_index]]
+        # print(interactions_df_test)
 
         recommender.fit(interactions_df_train, None, items_df)
         recommendations = recommender.recommend(
